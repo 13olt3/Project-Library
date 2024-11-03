@@ -18,24 +18,21 @@ function Book(title, author, pages, readStatus){
 }
 
 function addBookToLibrary(BookObj){
-    let readStatus = BookObj.readStatus;
-    if(readStatus == "yes"){
-        this.read = "has been read";
-    }
-    else{
-        this.read = "not read yet";
-    }
     let bookData = {
         Title: BookObj.title,
         Author: BookObj.author,
         Pages: BookObj.pages,
         Read: BookObj.read
+
     }
     myLibrary.push(bookData);
     return;
-    
+}
 
-
+let bookInfo = "";
+myLibrary.forEach(libraryIntoList);
+function libraryIntoList(book){
+    bookInfo += `${book.Title}, ${book.Author}, ${book.Pages} pages, ${book.Read}. \n`;
 }
 
 const hobbit = new Book('The Hobbit', 'Tolkien', '250', 'yes');

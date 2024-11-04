@@ -5,9 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project: Library</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    
 </head>
 <body>
+    <div class="content">
+        <div class="topBanner">
+            <div class="topBannerContent">
+                TOP BANNER
+                different buttons to access content
+            </div>
+            <button class="addBookBtn">Add new book</button>
+        </div>
+        <div class="sideBar">SIDE BAR
+            dispaly of books in the library
+        </div>
+        <div class="mainContent">MAIN content
+            book info
+            <fieldset class="addBookForm">
+                <legend>Add book to library</legend>
+
+                <label for="bookTitle">Book title: </label>
+                <input type="text" id="bookTitle" name="book_title">
+
+                <label for="bookAuthor">Book author:</label>
+                <input type="text" id="bookAuthor" name="book_author">
+
+                <label for="pages">Number of pages:</label>
+                <input type="text" id="pages" name="no_of_pages">
+            
+
+                
+
+            </fieldset>
+            <div id="visibilityTest">
+                Top TExt
+            </div>            
+            <!-- <div id="visibilityTest2"></div>
+                Bot text
+            </div> -->
+
+            
+
+        </div>
+    </div>
+
+
+
+
+    
+
     
 </body>
 </html>

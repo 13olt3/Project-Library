@@ -49,18 +49,29 @@ const bookDataForm = document.createElement("div");
 bookDataForm.classList.add("bookInputForm");
 
 
-const finder = document.getElementById("visibilityTest");
-const compStyles = window.getComputedStyle(finder);
-addBook.addEventListener("click",function(e){
-    if ( compStyles.getPropertyValue('visibility') == "visible"){
-        finder.style.visibility = "hidden"
+
+const bookForm = document.querySelector(".addBookForm");
+const bookFormStyle = window.getComputedStyle(bookForm);
+addBook.addEventListener("click", function(e){
+    if (bookFormStyle.getPropertyValue('visibility') == "visible"){
+        bookForm.style.visibility = "hidden";
     }
-    else if ( compStyles.getPropertyValue('visibility') == "hidden"){
-        finder.style.visibility = "visible";
+    else if (bookFormStyle.getPropertyValue('visibility') == "hidden"){
+        bookForm.style.visibility = "visible";
     }
 });
 
 
+const inputBookTitle = document.querySelector("#bookTitle");
+const inputBookAuthor = document.querySelector("#bookAuthor");
+const inputBookPages = document.querySelector("#pages");
 
+let newBookInput = "";
+
+const createBook = document.querySelector(".createBookBtn");
+createBook.addEventListener("click",function(e){
+    let newBookData = new Book(inputBookTitle.value, inputBookAuthor.value, inputBookPages.value, "no");
+    addBookToLibrary(newBookData);
+});
 
 

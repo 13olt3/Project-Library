@@ -20,8 +20,7 @@
         <div class="sideBar">SIDE BAR
             dispaly of books in the library
         </div>
-        <div class="mainContent">MAIN content
-            book info
+        <div class="mainContent">
             <fieldset class="addBookForm">
                 <legend>Add book to library</legend>
 
@@ -33,17 +32,19 @@
 
                 <label for="pages">Number of pages:</label>
                 <input type="text" id="pages" name="no_of_pages">
-            
+                <div>
+                    Has book been read?
+                    
+                    <label for="readStatusYes">Yes</label>
+                    <input type="radio" id="readStatusYes" name="readStatus" value="yes">
+                    <label for="readStatusNo">No</label>
+                    <input type="radio" id="readStatusNo" name="readStatus" value="no">
 
-                
+                </div>
+                <button class="createBookBtn"> Add book</button>                
 
             </fieldset>
-            <div id="visibilityTest">
-                Top TExt
-            </div>            
-            <!-- <div id="visibilityTest2"></div>
-                Bot text
-            </div> -->
+
 
             
 

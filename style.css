@@ -29,9 +29,10 @@ topBannerContent{
     grid-column: 1 / 5;
     grid-row: 1 / 2;
 }
-.addBookBtn{
+.addNewBookBtn{
     grid-column: 4 / 5;
     grid-row: 2 / 3;
+    margin: 5px;
 }
 
 /* 
@@ -41,8 +42,19 @@ SIDEBAR
 .sideBar{
     grid-column: 1 / 2;
     grid-row: 2 / 3;
+    text-align: center;
+    font-size: 1.5em;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr) 5fr;   
     
 }
+.sideBar > button {
+    border: 10px solid red;
+    border-radius: 10px;
+    margin: 10px;
+    /* font-size: 1.5em; */
+}
+
 
 /* 
 MAIN CONTENT 
@@ -73,7 +85,7 @@ MAIN CONTENT
     gap: 10px;
     position:absolute;
     align-self: center;
-    width: 60%;    
+    width: 55%;    
     
 
 }

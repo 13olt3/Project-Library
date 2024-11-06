@@ -104,9 +104,14 @@ function addBookToSidebar(){
     let bookName = myLibrary[bookNumber].Title;
     bookName = bookName.replace(/\s+/g, '');
     const sideBarBook = document.createElement("button");
+    
     sideBarBook.classList.add("sideBarBook");
     sideBarBook.classList.add(bookName);
     sideBarBook.textContent = myLibrary[bookNumber].Title;
+
+
+    
+
     sideBar.appendChild(sideBarBook);
 
 }
@@ -114,7 +119,18 @@ function addBookToSidebar(){
 fillSideBar();
 
 
+const targetBook = document.querySelectorAll(".sideBarBook");
 
-
-
+targetBook.forEach((book) =>{
+    book.addEventListener("click",function(e){
+    let bookClicked = e.target.textContent;
+    let bookIndex = "";
+    for (let i = 0; i < myLibrary.length; ++i){
+        if (bookClicked == myLibrary[i].Title){
+            bookIndex = i;
+        }
+    }
+    console.log(myLibrary[bookIndex]);
+    })
+});
 

@@ -1,4 +1,5 @@
 const myLibrary = [];
+let selectedBookIndex = "";
 
 function Book(title, author, pages, readStatus){
     this.title = title;
@@ -123,6 +124,11 @@ function addBookToSidebar(){
     sideBarBook.addEventListener("click", function(e){
         return returnBookIndex(e.target.textContent);
     });
+    sideBarBook.addEventListener("click",function(e){
+        let nameOfBook = e.target.textContent;
+        selectedBookIndex = returnBookIndex(nameOfBook);
+        updateMainData(returnBookIndex(nameOfBook));        
+    });
 
     sideBar.appendChild(sideBarBook);
 
@@ -132,13 +138,27 @@ fillSideBar();
 
 
 const targetBook = document.querySelectorAll(".sideBarBook");
+const removeBook = document.createElement("button");
+removeBook.classList.add("removeBookBtn");
+removeBook.textContent = "Remove book";
+
+const bookInformation = document.createElement("div");
+bookInformation.classList.add("bookInfo");
+
+
+removeBook.addEventListener('click', function(e){
+    return deleteBookBtn(selectedBookIndex);
+});
 
 targetBook.forEach((book) =>{
     book.addEventListener("click",function(e){
-        return returnBookIndex(e.target.textContent);
+        let nameOfBook = e.target.textContent;
+        selectedBookIndex = returnBookIndex(nameOfBook);
+        updateMainData(returnBookIndex(nameOfBook));        
     })
 });
 const showBookData = document.querySelector(".bookData");
+
 function returnBookIndex(bookName){
     let bookIndex = "";
     for (let i = 0; i < myLibrary.length; ++i){
@@ -146,11 +166,31 @@ function returnBookIndex(bookName){
             bookIndex = i;
         }
     }
-    hideAllMainContent();
-    showBookData.style.visibility = "visible";
-    showBookData.style.whiteSpace = "pre";
-    showBookData.textContent = `Title: ${myLibrary[bookIndex].Title} \r\nAuthor: ${myLibrary[bookIndex].Author};`
-    
+    return bookIndex;    
     // console.log(myLibrary[bookIndex]);
 }
+
+
+
+function updateMainData(bookIndex){
+    hideAllMainContent();
+    showBookData.style.visibility = "visible";
+
+    bookInformation.style.whiteSpace = "pre";
+    bookInformation.textContent = `Title: ${myLibrary[bookIndex].Title} \r\nAuthor: ${myLibrary[bookIndex].Author};`
+    showBookData.appendChild(removeBook);
+    showBookData.appendChild(bookInformation);
+}
+
+
+
+function deleteBookBtn(bookIndex){
+    let thisBook = myLibrary[bookIndex].Title;
+    thisBook = thisBook.replace(/\s+/g, '');
+    const deleteBook = document.querySelector(`.${thisBook}`);
+    myLibrary.splice(bookIndex, 1);
+    hideAllMainContent();
+    deleteBook.remove();
+}
+
 

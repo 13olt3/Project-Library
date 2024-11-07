@@ -48,14 +48,26 @@ const addBook = document.querySelector(".addNewBookBtn");
 const mainDisplay = document.querySelector(".mainContent");
 const bookForm = document.querySelector(".addBookForm");
 const bookFormStyle = window.getComputedStyle(bookForm);
+const allMainContent = document.querySelectorAll(".mainContent > *");
+
+function hideAllMainContent(){
+    allMainContent.forEach((div)=>{
+
+        div.style.visibility = "hidden";
+    });
+}
+
+
 
 addBook.addEventListener("click", function(e){
-    if (bookFormStyle.getPropertyValue('visibility') == "visible"){
-        bookForm.style.visibility = "hidden";
-    }
-    else if (bookFormStyle.getPropertyValue('visibility') == "hidden"){
-        bookForm.style.visibility = "visible";
-    }
+    // if (bookFormStyle.getPropertyValue('visibility') == "visible"){
+    //     bookForm.style.visibility = "hidden";
+    // }
+    // else if (bookFormStyle.getPropertyValue('visibility') == "hidden"){
+    //     bookForm.style.visibility = "visible";
+    // }
+    hideAllMainContent();
+    bookForm.style.visibility = "visible";
 });
 
 
@@ -107,10 +119,10 @@ function addBookToSidebar(){
     
     sideBarBook.classList.add("sideBarBook");
     sideBarBook.classList.add(bookName);
-    sideBarBook.textContent = myLibrary[bookNumber].Title;
-
-
-    
+    sideBarBook.textContent = myLibrary[bookNumber].Title;    
+    sideBarBook.addEventListener("click", function(e){
+        return returnBookIndex(e.target.textContent);
+    });
 
     sideBar.appendChild(sideBarBook);
 
@@ -123,14 +135,22 @@ const targetBook = document.querySelectorAll(".sideBarBook");
 
 targetBook.forEach((book) =>{
     book.addEventListener("click",function(e){
-    let bookClicked = e.target.textContent;
+        return returnBookIndex(e.target.textContent);
+    })
+});
+const showBookData = document.querySelector(".bookData");
+function returnBookIndex(bookName){
     let bookIndex = "";
     for (let i = 0; i < myLibrary.length; ++i){
-        if (bookClicked == myLibrary[i].Title){
+        if (bookName == myLibrary[i].Title){
             bookIndex = i;
         }
     }
-    console.log(myLibrary[bookIndex]);
-    })
-});
+    hideAllMainContent();
+    showBookData.style.visibility = "visible";
+    showBookData.style.whiteSpace = "pre";
+    showBookData.textContent = `Title: ${myLibrary[bookIndex].Title} \r\nAuthor: ${myLibrary[bookIndex].Author};`
+    
+    // console.log(myLibrary[bookIndex]);
+}
 

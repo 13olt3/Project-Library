@@ -94,6 +94,8 @@ MAIN CONTENT
     border: 5px solid black;
     min-height: 30%;
     border-radius: 10px;
+    font-size: 1.5em;
+    
 }
 
 .addBookForm > * {

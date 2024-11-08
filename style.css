@@ -45,7 +45,7 @@ SIDEBAR
     text-align: center;
     font-size: 1.5em;
     display: grid;
-    grid-template-rows: repeat(6, 1fr) 5fr;   
+    grid-template-rows: repeat(7, 1fr) 4fr;   
     
 }
 .sideBar > button {
@@ -53,6 +53,11 @@ SIDEBAR
     border-radius: 10px;
     margin: 10px;
     /* font-size: 1.5em; */
+}
+
+.arrowBtns{
+    visibility: hidden;
+    grid-row: 7 / 8;
 }
 
 

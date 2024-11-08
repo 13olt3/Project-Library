@@ -48,7 +48,7 @@ addBookToLibrary(theRing);
 const addBook = document.querySelector(".addNewBookBtn");
 const mainDisplay = document.querySelector(".mainContent");
 const bookForm = document.querySelector(".addBookForm");
-const bookFormStyle = window.getComputedStyle(bookForm);
+// const bookFormStyle = window.getComputedStyle(bookForm);
 const allMainContent = document.querySelectorAll(".mainContent > *");
 
 function hideAllMainContent(){
@@ -113,6 +113,7 @@ function fillSideBar(){
     }
 };
 function addBookToSidebar(){
+    // This function adds the LAST book to the sideBar
     let bookNumber = myLibrary.length -1;    
     let bookName = myLibrary[bookNumber].Title;
     bookName = bookName.replace(/\s+/g, '');
@@ -167,7 +168,6 @@ function returnBookIndex(bookName){
         }
     }
     return bookIndex;    
-    // console.log(myLibrary[bookIndex]);
 }
 
 
@@ -192,5 +192,8 @@ function deleteBookBtn(bookIndex){
     hideAllMainContent();
     deleteBook.remove();
 }
+
+const arrowBtns = document.querySelector(".arrowBtns");
+
 
 
